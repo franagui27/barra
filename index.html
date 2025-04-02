@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de Progreso con Scroll</title>
+    <style>
+        body {
+            height: 2000px; /* Asegura que haya suficiente espacio para scrollear */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 8px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            width: 0%;
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <script>
+        window.onscroll = function() { updateProgress() };
+
+        function updateProgress() {
+            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById("progressBar").style.width = progress + "%";
+        }
+    </script>
+
+</body>
+</html>
